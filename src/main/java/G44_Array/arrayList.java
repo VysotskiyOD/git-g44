@@ -5,15 +5,19 @@
 
 package G44_Array;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Comparator;
 import java.util.List;
 
 public class arrayList extends ParentClass {
+    private final static Logger LOGParent = LogManager.getLogger(arrayList.class);
     private String nameArrayList;
     private int numberArrayList;
 
     public arrayList() {
-        System.out.println("Новый пустой экземпляр класса " + this.getClass().getName());
+        LOGParent.info("Новый пустой экземпляр класса " + this.getClass().getName());
     }
 
     public arrayList(String name, int number) {
@@ -23,8 +27,8 @@ public class arrayList extends ParentClass {
 
     public static void printListString(List<String> myListString) {
         myListString.sort(Comparator.comparing(String::toString));
-        System.out.println("Natural order " + myListString);
+        LOGParent.info(String.format("Natural order " + myListString));
         myListString.sort(Comparator.comparing(String::toString).reversed());
-        System.out.println("Reverse order " + myListString);
+        LOGParent.info(String.format("Reverse order " + myListString));
     }
 }
